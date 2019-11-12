@@ -1,7 +1,7 @@
 FROM ros:dashing-ros-base-bionic
 
 RUN rm -rf /var/lib/apt/lists/*
-RUN sed -i 's/archive.ubuntu.com/ftp.daum.net/g' /etc/apt/sources.list
+RUN sed -i 's/archive.ubuntu.com/kr.archive.ubuntu.com/g' /etc/apt/sources.list
 
 # Install Cartographer dependencies
 RUN apt install -q -y \
