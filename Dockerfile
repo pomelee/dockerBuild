@@ -1,7 +1,9 @@
 FROM ros:dashing-ros-base-bionic
 
+RUN yum -y update
+
 # Install Cartographer dependencies
-RUN yum update && yum install -q -y \
+RUN apt-get update && apt install -q -y \
 	google-mock \
     libceres-dev \
     liblua5.3-dev \
@@ -18,7 +20,7 @@ RUN yum update && yum install -q -y \
 
 # Install TurtleBot3 dependencies
 RUN curl -sSL http://get.gazebosim.org | sh
-RUN yum update && yum install -q -y \
+RUN apt-get update && apt install -q -y \
 	ros-dashing-gazebo-* \
     ros-dashing-cartographer \
     ros-dashing-cartographer-ros \
