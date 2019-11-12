@@ -1,10 +1,13 @@
 FROM ubuntu:18.04
 FROM ros:dashing-ros-base-bionic
 
-USER root
-RUN yum -y update \
- && yum -y install httpd \
- && yum clean all
+#USER root
+#RUN yum -y update \
+# && yum -y install google-mock \
+# && yum -y install libceres-dev \
+# && yum clean all
+
+RUN apt-get update
 
 ENTRYPOINT ["echo", "hello"]
 
