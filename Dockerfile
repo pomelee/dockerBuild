@@ -1,11 +1,12 @@
 FROM ubuntu:18.04
 FROM ros:dashing-ros-base-bionic
 
-ENTRYPOINT ["echo", "hello"]
-#RUN apk update
-#RUN apk add --no-cache git
-#RUN pip install --no-cache-dir -r requirements.txt
+USER root
+RUN yum -y update \
+ && yum -y install httpd \
+ && yum clean all
 
+ENTRYPOINT ["echo", "hello"]
 
 # Install Cartographer dependencies
 #RUN apt-get update && apt install -q -y \
