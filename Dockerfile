@@ -1,9 +1,11 @@
 FROM ubuntu:18.04
 FROM ros:dashing-ros-base-bionic
 
-RUN apk update
-RUN apk add --no-cache git
-RUN pip install --no-cache-dir -r requirements.txt
+ENTRYPOINT ["echo", "hello"]
+#RUN apk update
+#RUN apk add --no-cache git
+#RUN pip install --no-cache-dir -r requirements.txt
+
 
 # Install Cartographer dependencies
 #RUN apt-get update && apt install -q -y \
