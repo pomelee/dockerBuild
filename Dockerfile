@@ -1,9 +1,11 @@
 FROM ros:dashing-ros-base-bionic
 
 RUN rm -rf /var/lib/apt/lists/*
+RUN apt-get update -o Acquire::CompressionTypes::Order::=gz
+RUN sudo apt-get update && sudo apt-get upgrade
 
 # Install Cartographer dependencies
-RUN apt-get update && apt install -q -y \
+RUN apt install -q -y \
     google-mock \
     libceres-dev \
     liblua5.3-dev \
