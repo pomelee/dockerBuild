@@ -1,31 +1,17 @@
 FROM ubuntu:latest
 
-# Install Cartographer dependencies
-RUN apt-get update && apt-get install -q -y \
-	google-mock \
-    libceres-dev \
-    liblua5.3-dev \
-    libboost-dev \
-    libboost-iostreams-dev \
-    libprotobuf-dev \
-    protobuf-compiler \
-    libcairo2-dev \
-    libpcl-dev \
-    python3-sphinx \
-    net-tools \
-    iputils-ping \
-    && rm -rf /var/lib/apt/lists/*
+LABEL io.k8s.description="Base image for Ubuntu based LEMP" \
+      io.k8s.display-name="OpenShift LEMP" \
+      io.openshift.s2i.scripts-url="image:///usr/libexec/s2i" \
+      io.openshift.expose-services="8080:http" \
+      io.openshift.tags="builder, Nginx, php-fpm, php-7.1"
 
-# Install TurtleBot3 dependencies
-RUN curl -sSL http://get.gazebosim.org | sh
-RUN apt-get update && apt-get install -q -y \
-	ros-dashing-gazebo-* \
-    ros-dashing-cartographer \
-    ros-dashing-cartographer-ros \
-    ros-dashing-navigation2 \
-    ros-dashing-nav2-bringup \
-    python3-vcstool \
-    wget \
-    && rm -rf /var/lib/apt/lists/*
+COPY ./s2i/bin/ /usr/libexec/s2i
 
+UN useradd -u 1001 -r -g 0 -d ${HOME} -s /sbin/nologin -c "Default Application User" default \
+    && mkdir -p ${HOME} \
+    && chown -R 1001:0 ${HOME} && chmod -R g+rwX ${HOME}
+
+RUN apt-get update -y && \
+    apt-get install -y software-properties-common
 
