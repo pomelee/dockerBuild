@@ -1,44 +1,33 @@
-FROM ubuntu:18.04
 FROM ros:dashing-ros-base-bionic
 
-#USER root
-#RUN yum -y update \
-# && yum -y install google-mock \
-# && yum -y install libceres-dev \
-# && yum clean all
-
-RUN apt-get update
-
-ENTRYPOINT ["echo", "hello"]
 
 # Install Cartographer dependencies
-#RUN apt-get update && apt install -q -y \
-#	google-mock \
-#    libceres-dev \
-#    liblua5.3-dev \
-#    libboost-dev \
-#    libboost-iostreams-dev \
-#    libprotobuf-dev \
-#    protobuf-compiler \
-#    libcairo2-dev \
-#    libpcl-dev \
-#    python3-sphinx \
-#    net-tools \
-#    iputils-ping \
-#    && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt install -q -y \
+    google-mock \
+    libceres-dev \
+    liblua5.3-dev \
+    libboost-dev \
+    libboost-iostreams-dev \
+    libprotobuf-dev \
+    protobuf-compiler \
+    libcairo2-dev \
+    libpcl-dev \
+    python3-sphinx \
+    net-tools \
+    iputils-ping \
+    && rm -rf /var/lib/apt/lists/*
 
 # Install TurtleBot3 dependencies
-#RUN curl -sSL http://get.gazebosim.org | sh
-#RUN apt-get update && apt install -q -y \
-#	ros-dashing-gazebo-* \
-#    ros-dashing-cartographer \
-#    ros-dashing-cartographer-ros \
-#    ros-dashing-navigation2 \
-#    ros-dashing-nav2-bringup \
-#    python3-vcstool \
-#    wget \
-#    && rm -rf /var/lib/apt/lists/*
-
+RUN curl -sSL http://get.gazebosim.org | sh
+RUN apt-get update && apt install -q -y \
+	ros-dashing-gazebo-* \
+    ros-dashing-cartographer \
+    ros-dashing-cartographer-ros \
+    ros-dashing-navigation2 \
+    ros-dashing-nav2-bringup \
+    python3-vcstool \
+    wget \
+    && rm -rf /var/lib/apt/lists/*
 
 # Install & Merge Test example TurtleBot3 ROS 2 Packages
 #RUN /bin/bash -c "source /opt/ros/dashing/setup.bash ;\
