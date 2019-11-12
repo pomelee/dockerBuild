@@ -1,7 +1,6 @@
 FROM ubuntu:18.04
 FROM ros:dashing-ros-base-bionic
 
-RUN yum -y update
 
 # Install Cartographer dependencies
 RUN apt-get update && apt install -q -y \
