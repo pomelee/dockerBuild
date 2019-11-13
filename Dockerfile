@@ -48,12 +48,12 @@ RUN /bin/bash -c "echo 'source /turtlebot3_ws/install/setup.bash' >> ~/.bashrc ;
 RUN /bin/bash -c "git clone https://github.com/pomelee/test.git ;\
                   cp test/run_teleoperation.sh . ;\
                   chmod +x teleop_keyboard.py ;\
+                  cp test/entrypoint.sh . ;\
+                  chmod +x entrypoint.sh ;\
                   cp test/teleop_keyboard.py /turtlebot3_ws/src/turtlebot3/turtlebot3/turtlebot3_teleop/turtlebot3_teleop/script/ ;\
                   chmod +x run_teleoperation.sh"
 
 # setup entrypoint
-COPY ./entrypoint.sh /
-
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["bash"]
 
