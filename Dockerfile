@@ -59,4 +59,4 @@ RUN /bin/bash -c "git clone https://github.com/pomelee/test.git ;\
 
 USER root
 RUN ["chmod", "+x", "/run_teleoperation.sh"]
-
+CMD ["/run_teleoperation.sh"]
