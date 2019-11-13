@@ -51,6 +51,9 @@ RUN /bin/bash -c "git clone https://github.com/pomelee/test.git ;\
                   cp test/teleop_keyboard.py /turtlebot3_ws/src/turtlebot3/turtlebot3/turtlebot3_teleop/turtlebot3_teleop/script/ ;\
                   chmod +x run_teleoperation.sh"
 
-COPY ./ros_entrypoint.sh / 
+# setup entrypoint
+COPY ./ros_entrypoint.sh /
+
 ENTRYPOINT ["/ros_entrypoint.sh"]
 CMD ["bash"]
+
