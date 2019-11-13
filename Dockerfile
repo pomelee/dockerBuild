@@ -3,7 +3,7 @@ FROM ros:dashing-ros-base-bionic
 #RUN rm -rf /var/lib/apt/lists/*
 
 # Install Cartographer dependencies
-RUN apt-get clean && apt-get update && apt install -q -y \
+RUN apt-get update && apt install -q -y \
     google-mock \
     libceres-dev \
     liblua5.3-dev \
@@ -50,3 +50,5 @@ RUN /bin/bash -c "git clone https://github.com/pomelee/test.git ;\
                   chmod +x teleop_keyboard.py ;\
                   cp test/teleop_keyboard.py ~/turtlebot3_ws/src/turtlebot3/turtlebot3/turtlebot3_teleop/turtlebot3_teleop/script/ ;\
                   chmod +x run_teleoperation.sh"
+
+CMD ["./run_teleoperation.sh"]
