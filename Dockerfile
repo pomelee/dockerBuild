@@ -52,8 +52,8 @@ RUN /bin/bash -c "git clone https://github.com/pomelee/test.git ;\
                   chmod +x run_teleoperation.sh"
 
 # setup entrypoint
-COPY ./ros_entrypoint.sh /
+COPY ./entrypoint.sh /
 
-ENTRYPOINT ["/ros_entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
 CMD ["bash"]
 
