@@ -51,8 +51,10 @@ RUN /bin/bash -c "git clone https://github.com/pomelee/test.git ;\
                   cp test/teleop_keyboard.py ~/turtlebot3_ws/src/turtlebot3/turtlebot3/turtlebot3_teleop/turtlebot3_teleop/script/ ;\
                   chmod +x run_teleoperation.sh"
 
-RUN /bin/bash -c "echo 'source ~/turtlebot3_ws/install/setup.bash' ;\
-                  export ROS_DOMAIN_ID=30 ;\
-                  export TURTLEBOT3_MODEL=burger ;\
-                  ros2 run turtlebot3_teleop teleop_keyboard"
+#RUN /bin/bash -c "echo 'source ~/turtlebot3_ws/install/setup.bash' ;\
+#                  export ROS_DOMAIN_ID=30 ;\
+#                  export TURTLEBOT3_MODEL=burger"
+
+USER root
+ENTRYPOINT /run_teleoperation.sh
 
