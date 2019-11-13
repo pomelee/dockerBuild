@@ -56,4 +56,4 @@ RUN /bin/bash -c "echo 'source /opt/ros/dashing/setup.bash' ;\
                   export ROS_DOMAIN_ID=30 ;\
                   export TURTLEBOT3_MODEL=burger"
 
-CMD ["ros2" "run turtlebot3_teleop teleop_keyboard"]
+CMD ros2 run turtlebot3_teleop teleop_keyboard
