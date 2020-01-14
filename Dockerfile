@@ -1,6 +1,6 @@
 
-FROM alpine:3.4
+FROM docker-registry.default.svc:5000/sample-project1/lg-base:latest
 
-RUN apk update
-RUN apk add vim
-RUN apk add git
+ARG USER=ubuntu
+USER ${USER}
+WORKDIR /home/$user
