@@ -1,7 +1,5 @@
 
-FROM docker-registry.default.svc:5000/ros2-proj/lg-base-docker:latest
+FROM centos:centos7
 
-ARG USER=ubuntu
-USER ${USER}
-WORKDIR /home/$user
-
+RUN yum install omping
+RUN omping
