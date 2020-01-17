@@ -1,5 +1,5 @@
 
 FROM centos:centos7
 
-RUN yum install omping
+RUN yum install -y omping
 RUN omping
